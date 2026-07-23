@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>virtual quizzes</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+	<script src="../static/js/config.js" defer></script>
+    <script src="../static/js/script.js" defer></script>
+	<!--script src="/static/js/document_chunks.js" defer></script-->
+	<!--script src="/static/js/searches.js" defer></script-->
+</head>
+
+<body>
+<h1>Customized Quiz Generator v.1</h1>
+<div class="container">
+    <div class="row0">
+        <div class="buttons">
+            <input class="icon-btn" type="button" value="Check Categories" onclick="checkCategories_FromServer();"/>
+            <input class="icon-btn" type="button" value="Get Student List" onclick="getStudentList();" disabled/>
+            <input class="icon-btn" type="button" value="Save/Update QG" onclick="saveQG();"/>
+            <input class="icon-btn" type="button" value="Delete QG" onclick="deleteQG();"/>
+            <input class="icon-btn" type="button" value="TBD" onclick="newDocument();" disabled/>
+            <input id="preview" class="icon-btn" type="button" value="Preview" onclick="preview();"/>
+        </div>
+
+        <div class="category" style="margin: 0 0 0 4px;">
+            <fieldset>
+                <legend >Categories:</legend>
+                <div class="category_table">
+                    <table>
+                        <thead id="tableHead_categories"><tr><th>id</th><th>category</th><th># of QG</th></tr></thead>
+                        <tbody id="tableBody_categories">
+                            <tr><td>-</td><td>-</td><td>-</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="name-group" style="flex: 1; margin-bottom: 2px; margin-left: 2px;">
+                    <label class="name-label" for="categoryInput">Category:</label>
+                    <input type="text" id="categoryInput" placeholder="Category here...">
+                </div>
+                <div class="name-group" style="flex: 1; margin-bottom: 2px; margin-left: 2px;">
+                    <label class="name-label" for="typeInput">Type:</label>
+                    <input type="text" id="typeInput" placeholder="Answer type (short/choice/action) here...">
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="category" style="margin-left: 4px;">
+            <fieldset>
+                <legend>Names:</legend>
+                <div class="category_table">
+                    <table>
+                        <thead id="tableHead_names">
+                            <tr><th>id</th><th>name</th><th># of Q</th></tr></thead>
+                        <tbody id="tableBody_names">
+                            <tr><td>=</td><td>=</td><td>=</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="name-group" style="flex: 1; margin-bottom: 2px; margin-left: 2px;">
+                    <label class="name-label" for="nameInput">Name:</label>
+                    <input type="text" id="nameInput" placeholder="Name of QG here...">
+                </div>
+                <div class="name-group" style="flex: 1; margin-bottom: 2px; margin-left: 2px;">
+                    <label class="name-label" for="descrInput">Description:</label>
+                    <input type="text" id="descrInput" placeholder="Description here...">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <textarea id="input1" aria-label="1st Input"></textarea>
+    <textarea id="input2" aria-label="2nd Input"></textarea>
+
+</div>
+
+<script>
+    // DOM 요소 가져오기
+    const categoryInput = document.getElementById('categoryInput');
+    const nameInput = document.getElementById('nameInput');
+    const descrInput = document.getElementById('descrInput');
+    const typeInput = document.getElementById('typeInput');
+
+    const input1 = document.getElementById('input1');
+    const input2 = document.getElementById('input2');
+
+    input1.innerHTML = "Q1:: ";
+    input2.innerHTML = "# python code\ndata = []\nanswer = [0]";
+
+    // let tableHead = document.querySelector("#tableHead_categories");
+    let colNames_categories = ["id", "category", "count"];
+    // let firstRow = tableHead.insertRow();
+    // for (let index = 0; index < colNames_categories.length; index++) {
+    //     firstRow.insertCell(index).innerHTML = colNames_categories[index];
+    // }
+
+    // tableHead = document.querySelector("#tableHead_names");
+    let colNames_names = ["id", "name", "count"];
+    // firstRow = tableHead.insertRow();
+    // for (let index = 0; index < colNames_names.length; index++) {
+    //     firstRow.insertCell(index).innerHTML = colNames_names[index];
+    // }
+
+</script>
+</body>
+</html>

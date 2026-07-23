@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>virtual quizzes</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+	<script src="../static/js/config.js" defer></script>
+    <script src="../static/js/script.js" defer></script>
+	<!--script src="/static/js/document_chunks.js" defer></script-->
+	<!--script src="/static/js/searches.js" defer></script-->
+</head>
+<body>
+
+<div class="container">
+    <!-- 왼쪽: 입력 영역 -->
+    <div class="left-panel">
+<!--    <div sytle="display: flex; width: 1200px;">-->
+        <div style="display: flex; gap: 10px;">
+        <fieldset class="left-panel" style="width: 200px; height: 150px;">
+			<legend >Categories:</legend>
+            <div>
+				<table>
+					<thead id="tableHead_categories"></thead>
+					<tbody id="tableBody_categories">
+						<tr><td>-</td><td>-</td></tr>
+					</tbody>
+				</table>
+			</div>
+        </fieldset>
+
+        <fieldset class="right-panel" style="width: 200px; height: 150px;">
+			<legend >Names:</legend>
+            <div>
+				<table>
+					<thead id="tableHead_names"></thead>
+					<tbody id="tableBody_names">
+						<tr><td>=</td><td>=</td></tr>
+					</tbody>
+				</table>
+			</div>
+        </fieldset>
+        </div>
+
+        <div style="padding: 5px;">
+            <input class="icon-btn" type="button" value="Check Categories" style="padding: 5px;" onclick="checkCategories_FromServer();"/>
+            <input class="icon-btn" type="button" value="Get Student List" onclick="getStudentList();" style="padding: 5px;"/>
+            <input class="icon-btn" type="button" value="Save QG" onclick="saveQG();" style="padding: 5px;"/>
+            <input class="icon-btn" type="button" value="TBD" onclick="newDocument();" style="padding: 5px;"/>
+            <input class="icon-btn" type="button" value="TBD" onclick="newDocument();" style="padding: 5px;"/>
+            <input class="icon-btn" type="button" value="TBD" onclick="newDocument();" style="padding: 5px;"/>
+        </div>
+
+        <!-- 새로 추가된 Name 입력란 -->
+        <div class="name-group">
+            <label class="name-label" for="categoryInput">Category:</label>
+            <input type="text" id="categoryInput" placeholder="Enter category here...">
+        </div>
+        <div class="name-group">
+            <label class="name-label" for="nameInput">Name:</label>
+            <input type="text" id="nameInput" placeholder="Enter name of QG here...">
+        </div>
+        <div class="name-group">
+            <label class="name-label" for="descrInput">Description:</label>
+            <input type="text" id="descrInput" placeholder="Add description here...">
+        </div>
+        <div class="name-group">
+            <label class="name-label" for="typeInput">Type:</label>
+            <input type="text" id="typeInput" placeholder="Enter answer type (short/choice/action) here...">
+        </div>
+
+        <div class="input-group">
+            <textarea id="input1" aria-label="1st Input" placeholder="Q1:: add 1st question here..."></textarea>
+        </div>
+
+        <div class="input-group">
+            <textarea id="input2" aria-label="2nd Input" placeholder="..."></textarea>
+        </div>
+
+<!--        <div class="input-group">-->
+<!--            <textarea id="input3" aria-label="3rd Input" placeholder="Enter ??? here..."></textarea>-->
+<!--        </div>-->
+    </div>
+
+    <!-- 오른쪽: 실시간 미리보기 영역 -->
+<!--    <div class="right-panel">-->
+<!--        <div class="preview-group">-->
+<!--            <div id="preview" class="preview-content"><span class="placeholder">내용을 입력하면 여기에 표시됩니다.</span></div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+</div>
+
+<!--<script>-->
+    // DOM 요소 가져오기
+    // const categoryInput = document.getElementById('categoryInput');
+    // const nameInput = document.getElementById('nameInput');
+    // const descrInput = document.getElementById('descrInput');
+    // const typeInput = document.getElementById('typeInput');
+    //
+    // const input1 = document.getElementById('input1');
+    // const input2 = document.getElementById('input2');
+    // // const input3 = document.getElementById('input3');
+    //
+    // input1.innerHTML = "Q1:: ";
+    // input2.innerHTML = "# python code\ndata = []\nanswer = [0]";
+    //
+    // const preview = document.getElementById('preview');
+    //
+    // let tableHead = document.querySelector("#tableHead_categories");
+    // let colNames_categories = ["id", "category", "count"];
+    // let firstRow = tableHead.insertRow();
+    // for (let index = 0; index < colNames_categories.length; index++) {
+    //     firstRow.insertCell(index).innerHTML = colNames_categories[index];
+    // }
+    //
+    // tableHead = document.querySelector("#tableHead_names");
+    // let colNames_names = ["id", "name", "count"];
+    // firstRow = tableHead.insertRow();
+    // for (let index = 0; index < colNames_names.length; index++) {
+    //     firstRow.insertCell(index).innerHTML = colNames_names[index];
+    // }
+
+<!--</script>-->
+</body>
+</html>
