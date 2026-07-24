@@ -1,83 +1,246 @@
-/* 기본 스타일 초기화 */
+/* 기본 스타일 및 현대적인 CSS 변수 선언 */
+:root {
+    --bg-main: #f8fafc;        /* 밝고 깔끔한 메인 배경색 */
+    --bg-card: #ffffff;        /* 구역별 카드 배경색 */
+    --border-color: #e2e8f0;   /* 연하고 부드러운 테두리 선 */
+    --text-main: #1e293b;     /* 가독성 높은 짙은 회색 텍스트 */
+    --text-muted: #64748b;    /* 부연 설명용 회색 텍스트 */
+
+    /* 포인트 컬러 (Indigo 계열) */
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-disabled: #cbd5e1;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body, html {
     height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fb;
-    font-size: 12px;
+    /* 폰트를 Pretendard/Noto Sans 기반의 세련된 고딕 계열로 변경 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-size: 13px; /* 가독성을 위해 베이스 크기를 살짝 키움 */
+    line-height: 1.5;
 }
 
 /* 메인 컨테이너 */
 .container {
     display: flex;
-    flex-direction: column; /* child들을 위/아래 정렬*/
-    min-width: 660px;
+    flex-direction: column;
+    min-width: 700px;
+    padding: 20px; /* 사방 여백을 주어 화면이 답답하지 않게 조절 */
+    gap: 16px;     /* 각 레이아웃 행 간격 확보 */
 }
 
-.row0{
+/* 상단 메인 레이아웃 (버튼 그룹 + 데이터 테이블들) */
+.row0 {
     display: flex;
-    flex-direction: row; /* child들을 좌/우로 정렬 */
-    margin-left: 5px;
-    margin-right: 5px;
+    flex-direction: row;
+    gap: 16px; /* 자식 요소들 사이의 간격을 직관적으로 제어 */
 }
+
+/* 좌측 버튼 그룹 */
 .buttons {
-    width: 150px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    width: 160px;
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
-    justify-content: space-between;
-}
-.icon-btn {
-    height: 28px;
-    font-family: Georgia, sans-serif;
+    gap: 8px; /* space-between 대신 일정한 간격 배치 */
 }
 
+/* 모던 스타일 버튼 */
+.icon-btn {
+    height: 34px; /* 살짝 두툼하게 키워 터치/클릭 영역 확보 */
+    font-family: inherit; /* 클래식 폰트 제거 */
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--text-main);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* 버튼 호버 및 활성화 상태 */
+.icon-btn:hover:not(:disabled) {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+/* 주요 액션 버튼 디자인 (예: Save, Preview 등 스크립트로 클래스 추가 추천) */
+.icon-btn.primary-action {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+}
+.icon-btn.primary-action:hover {
+    background-color: var(--primary-hover);
+}
+
+/* 비활성화 버튼 */
+.icon-btn:disabled {
+    color: #94a3b8;
+    background-color: #f1f5f9;
+    border-color: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 데이터 구역 카드 공통 스타일 (Categories, Names 박스 등) */
 .category {
     flex: 1;
-    height: 200px;
-    width: 200px;
-}
-.category_table {
-    margin: 5px;
-    max-height: 120px;
-    overflow-y: auto;
+    min-height: 220px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 은은한 그림자 추가 */
 }
 
-th:first-child,
-td:first-child {
-    width: 30px;
+/* 카드 내부 컴포넌트 간 여백 및 필드 스타일 */
+.category fieldset, .category legend {
+    /* 기존 fieldset의 구식 테두리를 세련되게 다듬는 용도 */
+    border: none;
 }
-th:nth-child(2),
-td:nth-child(2) {
-    width: 100px;
+
+/* 테이블 영역 스크롤바 코디네이팅 */
+.category_table {
+    margin-top: 8px;
+    max-height: 120px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
 }
+
+/* 모던 웹 테이블 스타일링 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 8px 10px; /* 패딩을 넓혀 행간 가독성 확보 */
+    border-bottom: 1px solid var(--border-color);
+}
+
+th:first-child, td:first-child { width: 40px; }
+th:nth-child(2), td:nth-child(2) { width: auto; }
+
 thead th {
     position: sticky;
     top: 0;
-    background: white;   /* 아래 row가 비치지 않도록 */
+    background: #f8fafc; /* 헤더 영역에 연한 그레이 톤 매핑 */
+    color: var(--text-muted);
+    font-weight: 600;
     z-index: 10;
 }
 
-textarea {
+/*!* 입력 창 (Input / Textarea) 현대화 *!*/
+/*input[type="text"], select {*/
+/*    width: 100%;*/
+/*    padding: 6px 10px;*/
+/*    margin-top: 4px;*/
+/*    margin-bottom: 8px;*/
+/*    border: 1px solid var(--border-color);*/
+/*    border-radius: 6px;*/
+/*    font-family: inherit;*/
+/*    font-size: 13px;*/
+/*    color: var(--text-main);*/
+/*    background-color: #f8fafc;*/
+/*    transition: all 0.2s;*/
+/*}*/
+
+/*input[type="text"]:focus {*/
+/*    outline: none;*/
+/*    border-color: var(--primary);*/
+/*    background-color: #ffffff;*/
+/*    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);*/
+/*}*/
+
+/* ==========================================================================
+   [추가] 공간 절약형 인라인 필드 박스 (Label + Input 한 칸 묶음)
+   ========================================================================== */
+
+/* 라벨과 인풋을 감싸는 부모 컨테이너 (HTML 구조에서 div 등으로 묶어주세요) */
+.field-box {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 120px;
-    /*margin: 0 50px 0 5px;*/
-    padding: 5px 10px;
-    border: 1px solid #cbd5e1;
+    padding: 6px 12px;         /* 박스 내부 여백 */
+    margin-bottom: 10px;       /* 필드 간 간격 */
+    background-color: #f8fafc; /* 연한 회색 배경 */
+    border: 1px solid var(--border-color);
     border-radius: 6px;
-    resize: vertical;
-    transition: border-color 0.2s;
-    font-family: Georgia, sans-serif;
+    transition: all 0.2s ease;
 }
 
-/* 글이 없을 때 보여줄 안내 문구 */
+/* 박스 내부의 작은 라벨 스타일 */
+.field-box label {
+    font-size: 11px;           /* 글씨를 작게 하여 공간 절약 */
+    font-weight: 600;
+    color: var(--text-muted);  /* 부드러운 회색 */
+    text-transform: uppercase; /* 가독성을 위한 대문자 변환 (선택) */
+    margin-bottom: 2px;
+    line-height: 1;
+}
+
+/* 박스 내부의 실제 입력창 스타일 */
+.field-box input[type="text"],
+.field-box select {
+    width: 100%;
+    border: none;              /* 외곽 테두리 제거 (부모 박스가 채움) */
+    background: transparent;   /* 배경 투명화 */
+    padding: 0;                /* 내부 패딩 제거 */
+    margin: 0;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--text-main);
+    font-weight: 500;
+    height: 24px;              /* 높이 고정 */
+}
+
+/* 입력창에 포커스(클릭) 되었을 때, 부모 박스 전체의 스타일을 변경 */
+.field-box:focus-within {
+    border-color: var(--primary);          /* 테두리를 포인트 컬러로 */
+    background-color: #ffffff;             /* 배경을 흰색으로 변경 */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); /* 은은한 네온 효과 */
+}
+
+/* 포커스 시 입력창 자체의 아웃라인 제거 */
+.field-box input[type="text"]:focus,
+.field-box select:focus {
+    outline: none;
+}
+
+/* 하단 코드 에디터 및 텍스트 박스 */
+textarea {
+    width: 100%;
+    height: 140px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    resize: vertical;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace; /* 코드는 고정폭 폰트로 지정 */
+    font-size: 12px;
+    background-color: #1e1e1e; /* 코드 가독성을 위해 다크 모드 에디터 스타일 적용 제안 */
+    color: #d4d4d4;
+    line-height: 1.6;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* 가이드 안내 문구 */
 .placeholder {
-    color: #a0aec0;
-    font-style: italic;
+    color: var(--text-muted);
+    font-style: normal;
+    font-size: 12px;
 }
